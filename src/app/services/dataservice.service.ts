@@ -24,11 +24,12 @@ export class DataserviceService {
     return  this.http.get<Devices[]>
     (this.ApiDevices);
   }
+
   getCityNameById( id: number, cities: [] ) {
     return cities.filter((city: any) => {
-      if (city.Id == id) {
-        return city.Name;
-      }
+    if (city.Id == id) {
+    return city.Name;
+    }
     });
   }
 

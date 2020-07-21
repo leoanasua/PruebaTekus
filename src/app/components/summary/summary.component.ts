@@ -18,20 +18,20 @@ export class SummaryComponent implements OnInit {
   constructor(private dataService: DataserviceService) { }
 
   ngOnInit(): void {
-    this.getCities();
-    this.getDevices();
+  this.getCities();
+  this.getDevices();
   }
 
   getDevices(){
-    this.dataService.getDevices()
+  this.dataService.getDevices()
     .subscribe((data: any ) => {
-      this.devices = data;
-      this.deviceName();
+    this.devices = data;
+    this.deviceName();
   });
   }
 
   getCities(){
-    this.dataService.getCities()
+  this.dataService.getCities()
     .subscribe( (data: any) => {
     const alert = (data.map((result) => {
     return (result.AlertDevicesCount);
@@ -46,9 +46,9 @@ export class SummaryComponent implements OnInit {
     this.totalWarning = (warning.reduce((a, b) => a + b, 0));
     this.totalNormal = (normal.reduce((a, b) => a + b, 0));
   });
-    this.dataService.getCities()
+  this.dataService.getCities()
     .subscribe( (data: any ) => {
-      this.cities = data;
+    this.cities = data;
     });
   }
 
@@ -57,5 +57,5 @@ export class SummaryComponent implements OnInit {
   device.CityId = this.dataService.getCityNameById(device.CityId, this.cities);
   });
 }
- }
+}
 

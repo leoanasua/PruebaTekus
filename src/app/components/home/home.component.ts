@@ -28,9 +28,9 @@ export class HomeComponent implements OnInit {
   }
 
   getCities() {
-    this.dataService.getCities()
-    .subscribe( (data: any) => {
+  this.dataService.getCities()
+    .subscribe((data: any) => {
     this.cities = data;
-    });
+  });
   }
 }

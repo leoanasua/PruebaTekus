@@ -1,36 +1,32 @@
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { async, TestBed } from '@angular/core/testing';
+import { TranslateModule, TranslateService} from '@ngx-translate/core';
 import { HomeComponent } from './home.component';
-import { TestBed, async, ComponentFixture } from '@angular/core/testing';
-import { DataserviceService } from '../../services/dataservice.service';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { TranslateService } from '@ngx-translate/core';
+
 
 describe('HomeComponent', () => {
-
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
+  let translate: TranslateService;
+  let http: HttpTestingController;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         HomeComponent
       ],
-      providers: [
-        DataserviceService,
-        TranslateService,
-        HomeComponent
-      ],
       imports: [
-       HttpClientTestingModule
-      ]
-    })
-    .compileComponents();
+        HttpClientTestingModule,
+        TranslateModule.forRoot()
+      ],
+      providers: [TranslateService]
+    }).compileComponents();
+    translate = TestBed.inject(TranslateService);
+    http = TestBed.inject(HttpTestingController);
   }));
-  beforeEach(() => {
-    fixture = TestBed.createComponent(HomeComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+
+  it('should create', async(() => {
+    const fixture = TestBed.createComponent(HomeComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app).toBeTruthy();
+  }));
 });
+
