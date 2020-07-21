@@ -1,6 +1,14 @@
 <h1 class="display-4 animated fadeIn animated"> Cities <i class="fas fa-map-marker-alt"></i>
 </h1>
 <hr>
+<label>
+    Translate
+        <select #langSelect (change)="changeLang(langSelect.value) ">
+            <option *ngFor="let lang of langs " [value]="lang">
+                {{ lang }}
+            </option>
+        </select>
+    </label>
 <div className='container mt-5 animate__animated animate__fadeIn'>
     <table class="table table-striped border">
         <thead class="thead-dark">
