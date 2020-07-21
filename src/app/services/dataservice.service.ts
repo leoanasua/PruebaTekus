@@ -17,12 +17,19 @@ export class DataserviceService {
 
   public getCities(): Observable<Cities[]> {
     return  this.http.get<Cities[]>
-                    (this.ApiCities);
+    (this.ApiCities);
   }
 
   public getDevices(): Observable<Devices[]> {
     return  this.http.get<Devices[]>
-                    (this.ApiDevices);
+    (this.ApiDevices);
+  }
+  getCityNameById( id: number, cities: [] ) {
+    return cities.filter((city: any) => {
+      if (city.Id == id) {
+        return city.Name;
+      }
+    });
   }
 
 }
